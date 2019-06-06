@@ -16,7 +16,13 @@ import java.util.Stack;
  * CSCI232: project 4
  * Yueh-Chen Tsou
  * 6/03/2019
- * This program implements both Breadth First Search and Depth First Search algorithm.
+ * This program implements both Breadth First Search and Depth First Search algorithm. Both of two algorithms are used 
+ * for traversing and searching a node in a graph.
+ * DfS algorithm is to traverse the graph in such a way that it tries to go far from the root node. Stack is used in the
+ * implementation of the DFS.
+ * BFS algorithm visits the nodes level by level, so it will start with level 0, and then it moves to the next levels 
+ * until the last level.
+ * 
  */
 // Stack is used to implement DFS algorithm
 public class DFSvBFSdemo {
@@ -85,12 +91,13 @@ public class DFSvBFSdemo {
 	    	
 	    	int[] node = new int[100];
 	    	int edges=0;
+	    	
+	    	// read adjacency list from the text file "input.txt
 	    	try {
 	    		Scanner fileInput = new Scanner(new File("input.txt"));			
 				while (fileInput.hasNext()) {
 					if(fileInput.hasNextInt()) {
 						node[edges] = fileInput.nextInt();
-//						System.out.print(node[edges] + " ");
 						edges++;
 					}			
 					else {
@@ -126,6 +133,7 @@ public class DFSvBFSdemo {
 	       List<Integer> visitedDFS = dfs(start, list);
 	       List<Integer> visitedBfs = bfs(start, list);
 			
+	       // output to the text file "output.txt"
 	       try {
 				BufferedWriter writer = new BufferedWriter(new FileWriter("output.txt"));
 				writer.write("DFS: ");
